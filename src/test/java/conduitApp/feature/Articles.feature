@@ -2,17 +2,18 @@ Feature: Articles
 
     
     Background: Create a new article
-        Given url 'https://conduit.productionready.io/api/'
+        Given url apiUrl
+
         #Will call feature file everytime before executing scenario
         # * def tokenResponse = call read('classpath:helpers/Token.feature')
 
         #Will call feature only once at begining after that it will use cached value
-        * def tokenResponse = callonce read('classpath:helpers/Token.feature')
-        * def token = tokenResponse.authToken
+        # * def tokenResponse = callonce read('classpath:helpers/Token.feature')
+        # * def token = tokenResponse.authToken
 
-    @debug @ignore
+    @ignore
     Scenario: Create a new article
-        Given header Authorization = 'Token '+token
+        # Given header Authorization = 'Token '+token
         Given path 'articles'
         And request {"article": {"tagList": [],"title": "MyArticle","description": "Sunny's Article","body": "My first article"}}
         When method Post
@@ -21,7 +22,7 @@ Feature: Articles
 
     @delete
     Scenario: Create and delete article
-        Given header Authorization = 'Token '+token
+        # Given header Authorization = 'Token '+token
         Given path 'articles'
         #Create article
         And request {"article": {"tagList": [],"title": "ArticleToBeDelete","description": "Sunny's Article","body": "My first article"}}
@@ -38,7 +39,7 @@ Feature: Articles
         And match response.articles[0].title == 'ArticleToBeDelete'
 
         #Delete article
-        Given header Authorization = 'Token '+token
+        # Given header Authorization = 'Token '+token
         Given path 'articles', slug
         When method Delete
         Then status 200
