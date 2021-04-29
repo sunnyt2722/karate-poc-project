@@ -3,28 +3,28 @@ Feature: Test for the homepage
     Background: Define URL
         Given url 'https://conduit.productionready.io/api/'
 
-    # Scenario: Get all tags
-    #     Given url 'https://conduit.productionready.io/api/tags'
-    #     When method Get
-    #     Then status 200
+    Scenario: Get all tags
+        Given url 'https://conduit.productionready.io/api/tags'
+        When method Get
+        Then status 200
 
-    # Scenario: Get 10 articles from the page
-    #     Given url 'https://conduit.productionready.io/api/articles?limit=10&offset=0'
-    #     When method Get
-    #     Then status 200
+    Scenario: Get 10 articles from the page
+        Given url 'https://conduit.productionready.io/api/articles?limit=10&offset=0'
+        When method Get
+        Then status 200
 
-    # Scenario: Get 10 articles from the page using param
-    #     Given param limit = 10
-    #     Given param offset = 0
-    #     Given url 'https://conduit.productionready.io/api/articles'
-    #     When method Get
-    #     Then status 200
+    Scenario: Get 10 articles from the page using param
+        Given param limit = 10
+        Given param offset = 0
+        Given url 'https://conduit.productionready.io/api/articles'
+        When method Get
+        Then status 200
 
-    # Scenario: Get 10 articles from the page using params
-    #     Given params { limit:10, offset: 0}
-    #     Given url 'https://conduit.productionready.io/api/articles'
-    #     When method Get
-    #     Then status 200
+    Scenario: Get 10 articles from the page using params
+        Given params { limit:10, offset: 0}
+        Given url 'https://conduit.productionready.io/api/articles'
+        When method Get
+        Then status 200
 
     @debug
     Scenario: Get all tags using path variable
